@@ -46,8 +46,7 @@ body {
 }
 
 .cell.used {
-  background: grey;
-  color: #222;
+  color: #646464;
   pointer-events: none;
 }
 
