@@ -6,7 +6,7 @@ const restartBtn = document.getElementById("restart");
 let numbers = [...Array(20).keys()].map(n => n + 1);
 let expected = 1;
 let used = new Set();
-let timeLeft = 23;
+let timeLeft = 25;
 let timerInterval, shuffleInterval;
 
 function shuffleArray(arr) {
@@ -42,7 +42,7 @@ function handleClick(num) {
     used.add(num);
     expected++;
 
-    if (expected > 10) {
+    if (expected > 20) {
       messageEl.textContent = "✅ You Won!";
       stopGame();
     }
