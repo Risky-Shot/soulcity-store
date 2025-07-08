@@ -3,10 +3,10 @@ const timerEl = document.getElementById("timer");
 const messageEl = document.getElementById("message");
 const restartBtn = document.getElementById("restart");
 
-let numbers = [...Array(20).keys()].map(n => n + 1);
+let numbers = [...Array(19).keys()].map(n => n + 2); // numbers 2 to 20
 let expected = 1;
 let used = new Set();
-let timeLeft = 23;
+let timeLeft = 30;
 let timerInterval, shuffleInterval;
 
 function shuffleArray(arr) {
@@ -20,6 +20,21 @@ function shuffleArray(arr) {
 function renderGrid() {
   grid.innerHTML = "";
 
+  // Always render 1 at the top-left
+  const first = document.createElement("div");
+  first.className = "cell";
+  first.textContent = 1;
+
+  if (used.has(1)) {
+    first.classList.add("used");
+  } else if (expected === 1) {
+    first.classList.add("selected");
+  }
+
+  first.onclick = () => handleClick(1);
+  grid.appendChild(first);
+
+  // Render shuffled 2–20
   for (let i = 0; i < numbers.length; i++) {
     const num = numbers[i];
     const div = document.createElement("div");
@@ -42,7 +57,7 @@ function handleClick(num) {
     used.add(num);
     expected++;
 
-    if (expected > 10) {
+    if (expected > 20) {
       messageEl.textContent = "✅ You Won!";
       stopGame();
     }
@@ -64,11 +79,28 @@ function shuffleGrid() {
   renderGrid();
 }
 
+function updateProgressBar() {
+  const bar = document.getElementById("progress-bar");
+  const percent = Math.max((timeLeft / 30) * 100, 0);
+  bar.style.width = `${percent}%`;
+
+  // Optional: Color changes as time decreases
+  if (percent <= 30) {
+    bar.style.backgroundColor = "red";
+  } else if (percent <= 60) {
+    bar.style.backgroundColor = "orange";
+  } else {
+    bar.style.backgroundColor = "limegreen";
+  }
+}
+
 function startTimer() {
   timerEl.textContent = `Time: ${timeLeft}`;
   timerInterval = setInterval(() => {
     timeLeft--;
     timerEl.textContent = `Time: ${timeLeft}`;
+
+    updateProgressBar();
 
     if (timeLeft <= 0) {
       messageEl.textContent = "⏰ Time's up!";
@@ -93,8 +125,8 @@ function startGame() {
   expected = 1;
   used.add(expected);
   expected = 2;
-  timeLeft = 23;
-  numbers = shuffleArray([...Array(20).keys()].map(n => n + 1));
+  timeLeft = 30;
+  numbers = shuffleArray([...Array(19).keys()].map(n => n + 2)); // 2 to 20
 
   renderGrid();
   startTimer();
