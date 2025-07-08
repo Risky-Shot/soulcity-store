@@ -81,7 +81,7 @@ function shuffleGrid() {
 
 function updateProgressBar() {
   const bar = document.getElementById("progress-bar");
-  const percent = Math.max((timeLeft / 30) * 100, 0);
+  const percent = Math.max((timeLeft / 23) * 100, 0);
   bar.style.width = `${percent}%`;
 
   // Optional: Color changes as time decreases
