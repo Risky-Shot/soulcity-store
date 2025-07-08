@@ -6,7 +6,7 @@ const restartBtn = document.getElementById("restart");
 let numbers = [...Array(19).keys()].map(n => n + 2); // numbers 2 to 20
 let expected = 1;
 let used = new Set();
-let timeLeft = 30;
+let timeLeft = 23;
 let timerInterval, shuffleInterval;
 
 function shuffleArray(arr) {
