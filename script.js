@@ -63,11 +63,10 @@ function handleClick(num) {
     }
   } else {
     // Wrong click, reset to 1
-    used.clear();
-    expected = 1;
-    used.add(expected);
-    expected = 2;
-    messageEl.textContent = "❌ Wrong! Resetting...";
+    // expected = 1;
+    // used.add(expected);
+    // expected = 2;
+    messageEl.textContent = "❌ Wrong!";
     setTimeout(() => (messageEl.textContent = ""), 1000);
   }
 
@@ -130,7 +129,7 @@ function startGame() {
 
   renderGrid();
   startTimer();
-  shuffleInterval = setInterval(shuffleGrid, 1500);
+  shuffleInterval = setInterval(shuffleGrid, 2000);
   messageEl.textContent = "";
 }
 
