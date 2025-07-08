@@ -125,7 +125,7 @@ function startGame() {
   expected = 1;
   used.add(expected);
   expected = 2;
-  timeLeft = 30;
+  timeLeft = 23;
   numbers = shuffleArray([...Array(19).keys()].map(n => n + 2)); // 2 to 20
 
   renderGrid();
