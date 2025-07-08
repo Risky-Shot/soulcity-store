@@ -6,7 +6,7 @@ const restartBtn = document.getElementById("restart");
 let numbers = [...Array(19).keys()].map(n => n + 2); // numbers 2 to 20
 let expected = 1;
 let used = new Set();
-let timeLeft = 23;
+let timeLeft = 25;
 let timerInterval, shuffleInterval;
 
 function shuffleArray(arr) {
@@ -67,7 +67,9 @@ function handleClick(num) {
     // used.add(expected);
     // expected = 2;
     messageEl.textContent = "❌ Wrong!";
-    setTimeout(() => (messageEl.textContent = ""), 1000);
+    setTimeout(() => (messageEl.textContent = "---"), 1000);
+    timeLeft = Math.max(0, timeLeft - 0.5); // prevent negative time
+    updateProgressBar();
   }
 
   renderGrid();
@@ -80,7 +82,7 @@ function shuffleGrid() {
 
 function updateProgressBar() {
   const bar = document.getElementById("progress-bar");
-  const percent = Math.max((timeLeft / 23) * 100, 0);
+  const percent = Math.max((timeLeft / 25) * 100, 0);
   bar.style.width = `${percent}%`;
 
   // Optional: Color changes as time decreases
@@ -124,13 +126,13 @@ function startGame() {
   expected = 1;
   used.add(expected);
   expected = 2;
-  timeLeft = 23;
+  timeLeft = 25;
   numbers = shuffleArray([...Array(19).keys()].map(n => n + 2)); // 2 to 20
 
   renderGrid();
   startTimer();
   shuffleInterval = setInterval(shuffleGrid, 2000);
-  messageEl.textContent = "";
+  messageEl.textContent = "---"
 }
 
 restartBtn.onclick = startGame;
