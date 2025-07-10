@@ -63,7 +63,7 @@ function handleClick(num) {
     }
   } else {
     // Wrong click, reset to 1
-    // expected = 1;
+    expected = 1;
     // used.add(expected);
     // expected = 2;
     messageEl.textContent = "❌ Wrong!";
@@ -124,8 +124,6 @@ function startGame() {
 
   used.clear();
   expected = 1;
-  used.add(expected);
-  expected = 2;
   timeLeft = 25;
   numbers = shuffleArray([...Array(19).keys()].map(n => n + 2)); // 2 to 20
 
