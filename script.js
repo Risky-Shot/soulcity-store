@@ -68,7 +68,7 @@ function handleClick(num) {
     // expected = 2;
     messageEl.textContent = "❌ Wrong!";
     setTimeout(() => (messageEl.textContent = "---"), 1000);
-    timeLeft = Math.max(0, timeLeft - 0.5); // prevent negative time
+    timeLeft = Math.max(0, timeLeft - 0.75); // prevent negative time
     updateProgressBar();
   }
 
