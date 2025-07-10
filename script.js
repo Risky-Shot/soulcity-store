@@ -63,7 +63,7 @@ function handleClick(num) {
     }
   } else {
     // Wrong click, reset to 1
-    expected = 1;
+    //expected = 1;
     // used.add(expected);
     // expected = 2;
     messageEl.textContent = "❌ Wrong!";
