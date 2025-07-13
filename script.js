@@ -129,7 +129,7 @@ function startGame() {
 
   renderGrid();
   startTimer();
-  shuffleInterval = setInterval(shuffleGrid, 2000);
+  shuffleInterval = setInterval(shuffleGrid, 1500);
   messageEl.textContent = "---"
 }
 
